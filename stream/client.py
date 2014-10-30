@@ -87,7 +87,7 @@ class StreamClient(object):
                           params=default_params)
         logger.debug('stream api call %s, headers %s data %s',
                      response.url, headers, data)
-        result = serializer.loads(response.content)
+        result = serializer.loads(response.text)
         if result.get('exception'):
             self.raise_exception(result, status_code=response.status_code)
         return result
